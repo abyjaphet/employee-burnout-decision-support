@@ -16,6 +16,11 @@ This README documents the code and application submitted alongside the dissertat
 ├── pages/
 │   ├── 1_employee_assessment.py    # Assessment form, prediction, explanation, recommendations
 │   └── 2_Manager_Dashboard.py      # Organisational dashboard, employee search, CSV export
+├── screenshots/
+│   ├── landing-page.png            # Landing page
+│   ├── employee-assessment.png     # Employee assessment
+│   ├── employee-assessment-report.png # Employee assessment report
+│   └── manager-dashboard.png       # Manager dashboard
 ├── utils/
 │   ├── __init__.py
 │   ├── predictor.py                # Loads the trained model and returns predictions
@@ -39,6 +44,19 @@ This README documents the code and application submitted alongside the dissertat
 ├── burnout_predict.ipynb           # Model training notebook (data prep, EBM/XGBoost, SHAP)
 └── requirements.txt
 ```
+## Screenshots
+
+### Landing Page
+![Landing Page](screenshots/landing-page.png)
+
+### Employee Assessment
+![Employee Assessment](screenshots/employee-assessment.png)
+
+### Employee Assessment Report
+![Employee Assessment Report](screenshots/employee-assessment-report.png)
+
+### Manager Dashboard
+![Manager Dashboard](screenshots/manager-dashboard.png)
 
 > **Note:** the folder layout above (`pages/`, `models/`, `data/`, `.streamlit/`, `scripts/`) reflects where each file belongs when running the app locally. Place the uploaded files into these folders before running, as described in Section 3.
 
