@@ -163,4 +163,4 @@ Values entered outside the training-data range (Years in Company, Team Size) sho
 ## 8. Author
 
 Abednego Japhet — MSc Data Science
-Dissertation supervisor: Dr. [confirm spelling: Yongqiang / Yongquiang] Cheng
+Dissertation supervisor: Dr. Yongqiang Cheng
