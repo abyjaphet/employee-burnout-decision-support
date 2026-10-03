@@ -116,7 +116,7 @@ This vendors the required `libomp.dylib` into the installed XGBoost package so t
 2. **Prediction** — `utils/predictor.py` loads the trained XGBoost model and returns a burnout-risk classification (Low/Moderate/High) with a confidence score.
 3. **Explanation** — `utils/shap_utils.py` generates SHAP values for the submitted assessment, producing a top-5 feature importance chart and a waterfall plot for the specific prediction.
 4. **Recommendations** — `utils/recommendations.py` maps the predicted risk level to a priority flag and a short list of suggested actions.
-5. **Recording** — `utils/storage.py` appends the full assessment, prediction, explanation and recommendation to `data/predictions.csv`.
+5. **Recording** — `utils/storage.py` appends the full assessment, prediction, explanation and recommendation to `Recording — utils/storage.py keeps each assessment in the current browser session so it appears on the Manager Dashboard. Nothing is stored on the server.`.
 6. **Manager Dashboard** (`pages/2_Manager_Dashboard.py`) — provides an organisational view: burnout distribution, average prediction confidence, per-employee search and report, aggregate burnout drivers, and CSV export of all recorded assessments.
 
 ---
