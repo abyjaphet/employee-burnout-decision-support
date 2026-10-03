@@ -143,6 +143,20 @@ if predict_clicked:
         st.error(f"Prediction failed: {exc}")
         st.stop()
 
+    # Save straight after a successful prediction, before any charts are
+    # drawn, so a plotting error can never stop the record reaching the
+    # Manager Dashboard.
+    record = employee.copy()
+    record.update(model_input)
+    record["Prediction"] = level
+    record["Confidence"] = confidence
+    record["Priority"] = recommendation["Priority"]
+    record["Recommendations"] = "; ".join(recommendation["Recommendations"])
+    record["Top SHAP Driver"] = top_driver
+    record["Top 5 SHAP Drivers"] = "|".join(top5["Feature"].tolist())
+    record["Top SHAP Scores"] = "|".join(top5["SHAP"].round(3).astype(str))
+    save_prediction(record)
+
     st.success("Prediction complete")
     st.markdown(
         f"""
@@ -204,13 +218,4 @@ if predict_clicked:
     for action in recommendation["Recommendations"]:
         st.write("✅", action)
 
-    record = employee.copy()
-    record.update(model_input)
-    record["Prediction"] = level
-    record["Confidence"] = confidence
-    record["Priority"] = recommendation["Priority"]
-    record["Recommendations"] = "; ".join(recommendation["Recommendations"])
-    record["Top SHAP Driver"] = top_driver
-    record["Top 5 SHAP Drivers"] = "|".join(top5["Feature"].tolist())
-    record["Top SHAP Scores"] = "|".join(top5["SHAP"].round(3).astype(str))
-    save_prediction(record)
+    st.info("This assessment has been added to the **Manager Dashboard**.")

@@ -5,6 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+from utils.storage import load_predictions
 from utils.ui import load_css, show_sidebar
 
 st.set_page_config(
@@ -19,14 +20,16 @@ show_sidebar()
 st.title("Manager Decision Support Dashboard")
 st.caption("Monitor employee burnout across the organisation.")
 
-ROOT = Path(__file__).resolve().parents[1]
-DATA_FILE = ROOT / "data" / "predictions.csv"
+records = load_predictions()
 
-if not DATA_FILE.exists():
-    st.warning("No employee assessments available yet.")
+if not records:
+    st.info(
+        "No assessments recorded in this session yet. "
+        "Submit an assessment on the Employee Assessment page to see it appear here."
+    )
     st.stop()
 
-df = pd.read_csv(DATA_FILE)
+df = pd.DataFrame(records)
 df["Confidence"] = pd.to_numeric(df["Confidence"], errors="coerce")
 df["Assessment Date"] = pd.to_datetime(df["Assessment Date"], errors="coerce")
 df["Gender"] = df["Gender"].map({0: "Female", 1: "Male"})
